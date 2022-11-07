@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test">
+      <p v-model="aa">text</p>
+      <p>text</p>
+    </div>
+  </body>
+  <script>
+    var querySelector = document.querySelector('#test')
+    var getElementById = document.getElementById('test')
+    console.log(querySelector === getElementById) // true
+    var querySelectorAll = document.querySelectorAll('p')
+    for(let i=0;i < querySelectorAll.length;i++){
+      querySelector.appendChild(document.createElement('p'))
+    }
+    console.log(querySelectorAll.length) //值为2,动态添加元素并没有使querySelectorAll发生变化
+    var getElementsByTagName = document.getElementsByTagName('p')
+    for(let i=0;i < 3;i++){
+      getElementById.appendChild(document.createElement('p'))
+    }
+    console.log(getElementsByTagName.length) //值为4+3=7,每次动态添加元素都使getElementsByTagName发生了变化
+  </script>
+</html>
